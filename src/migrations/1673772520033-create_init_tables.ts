@@ -216,7 +216,7 @@ export class createInitTables1673772520033 implements MigrationInterface {
       );
       if (!foreignKey2) {
         await queryRunner.createForeignKey(
-            'expenses',
+            'vows',
             new TableForeignKey({
               columnNames: ['senagog_id'],
               referencedColumnNames: ['id'],
@@ -302,7 +302,7 @@ export class createInitTables1673772520033 implements MigrationInterface {
       );
       if (!foreignKey2) {
         await queryRunner.createForeignKey(
-            'expenses',
+            'receipts',
             new TableForeignKey({
               columnNames: ['senagog_id'],
               referencedColumnNames: ['id'],
