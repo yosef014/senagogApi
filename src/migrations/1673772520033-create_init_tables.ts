@@ -159,6 +159,11 @@ export class createInitTables1673772520033 implements MigrationInterface {
               isNullable: true,
             },
             {
+              name: 'senagog_id',
+              type: 'bigint',
+              isNullable: true,
+            },
+            {
               name: 'price',
               type: 'bigint',
               isNullable: true,
@@ -206,6 +211,19 @@ export class createInitTables1673772520033 implements MigrationInterface {
           }),
         );
       }
+      const foreignKey2 = table.foreignKeys.find(
+          (fk: any) => fk.columnNames.indexOf('senagog_id') !== -1,
+      );
+      if (!foreignKey2) {
+        await queryRunner.createForeignKey(
+            'expenses',
+            new TableForeignKey({
+              columnNames: ['senagog_id'],
+              referencedColumnNames: ['id'],
+              referencedTableName: 'senagogs',
+            }),
+        );
+      }
     }
 
     // ---------------------------------------------------------------------------
@@ -225,6 +243,11 @@ export class createInitTables1673772520033 implements MigrationInterface {
               name: 'customer_id',
               type: 'bigint',
               isNullable: false,
+            },
+            {
+              name: 'senagog_id',
+              type: 'bigint',
+              isNullable: true,
             },
             {
               name: 'price',
@@ -274,6 +297,19 @@ export class createInitTables1673772520033 implements MigrationInterface {
           }),
         );
       }
+      const foreignKey2 = table.foreignKeys.find(
+          (fk: any) => fk.columnNames.indexOf('senagog_id') !== -1,
+      );
+      if (!foreignKey2) {
+        await queryRunner.createForeignKey(
+            'expenses',
+            new TableForeignKey({
+              columnNames: ['senagog_id'],
+              referencedColumnNames: ['id'],
+              referencedTableName: 'senagogs',
+            }),
+        );
+      }
     }
 
 
@@ -295,6 +331,11 @@ export class createInitTables1673772520033 implements MigrationInterface {
                 name: 'customer_id',
                 type: 'bigint',
                 isNullable: false,
+              },
+              {
+                name: 'senagog_id',
+                type: 'bigint',
+                isNullable: true,
               },
               {
                 name: 'price',
@@ -342,6 +383,20 @@ export class createInitTables1673772520033 implements MigrationInterface {
               referencedColumnNames: ['id'],
               referencedTableName: 'customers',
             }),
+          );
+        }
+
+        const foreignKey2 = table.foreignKeys.find(
+            (fk: any) => fk.columnNames.indexOf('senagog_id') !== -1,
+        );
+        if (!foreignKey2) {
+          await queryRunner.createForeignKey(
+              'expenses',
+              new TableForeignKey({
+                columnNames: ['senagog_id'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'senagogs',
+              }),
           );
         }
       }

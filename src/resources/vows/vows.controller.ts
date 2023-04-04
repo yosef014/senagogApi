@@ -7,9 +7,9 @@ import { UpdateVowDto } from './dto/update-vow.dto';
 export class VowsController {
   constructor(private readonly vowsService: VowsService) {}
 
-  @Post()
-  create(@Body() createVowDto: CreateVowDto) {
-    return this.vowsService.create(createVowDto);
+  @Post('save-vow')
+  saveVow(@Body() body) {
+    return this.vowsService.saveVow(body);
   }
 
   @Get()
