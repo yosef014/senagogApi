@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { CreateVowDto } from './dto/create-vow.dto';
 import { UpdateVowDto } from './dto/update-vow.dto';
+import ErrorHandler from "../../helpers/error-handling/error-handler";
 
 @Injectable()
 export class VowsService {
-  create(createVowDto: CreateVowDto) {
-    return 'This action adds a new vow';
+  saveVow(body) {
+    try {
+      const { customer_id, price, description, name} = body
+
+
+    } catch (e) {
+      new ErrorHandler(e, 'save-vow-error')
+    }
   }
 
   findAll() {
