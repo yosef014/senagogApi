@@ -56,7 +56,23 @@ export class UsersService {
       return token
 
     } catch (e) {
-      new ErrorHandler(e, 'create-user-error')
+      new ErrorHandler(e, 'login-user-error')
+    }
+  }
+
+  async getUserByToken(data) {
+    try {
+      const userIdentity = await this.decodeToken(data?.token)
+      if (!userIdentity) {
+         throw new HttpException('decodeToken-ERROR', HttpStatus.NOT_FOUND);
+      }
+
+      const user = await User.findOneOrFail({where: { id: userIdentity.jtui}})
+      delete user.password
+      return user
+    } catch(e) {
+      new ErrorHandler(e, 'get-user-by-token-error')
+
     }
   }
 
