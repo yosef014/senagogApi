@@ -17,7 +17,7 @@ export class createUserAdmin1681151831817 implements MigrationInterface {
           senagog_id: 1,
           permission_type: 'ADMIN',
           password: bcryptPassword,
-          created_at: Date.now(),
+          created_at: new Date(),
           user_name: 'admin'
         }).save()
      }
