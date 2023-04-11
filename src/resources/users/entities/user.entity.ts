@@ -50,7 +50,7 @@ export class User extends WrapperEntity {
   @Column({ nullable: true })
   last_logged: Date;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ type: 'timestamp', default: new Date() })
   created_at: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
