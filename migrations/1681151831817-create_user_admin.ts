@@ -1,7 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-const bcrypt = require('bcrypt');
-import { User } from '../resources/users/entities/user.entity';
 import {Senagog} from "../resources/senagogs/entities/senagog.entity";
+import {User} from "../resources/users/entities/user.entity";
+const bcrypt = require('bcrypt');
+
 
 export class createUserAdmin1681151831817 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
