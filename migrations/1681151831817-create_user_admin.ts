@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 const bcrypt = require('bcrypt');
-import { User } from '../../src/resources/users/entities/user.entity';
+import { User } from '../resources/users/entities/user.entity';
 import {Senagog} from "../resources/senagogs/entities/senagog.entity";
 
 export class createUserAdmin1681151831817 implements MigrationInterface {
