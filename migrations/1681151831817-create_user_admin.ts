@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import {Senagog} from "../resources/senagogs/entities/senagog.entity";
-import {User} from "../resources/users/entities/user.entity";
+import {Senagog} from "src/resources/senagogs/entities/senagog.entity";
+import {User} from "src/resources/users/entities/user.entity";
 const bcrypt = require('bcrypt');
 
 
