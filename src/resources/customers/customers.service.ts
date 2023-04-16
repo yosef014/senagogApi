@@ -32,7 +32,7 @@ export class CustomersService {
       await CustomerSenagogPivot.create({
         senagog_id: senagog_id,
         customer_id: customer.id
-      })
+      })?.save()
 
       delete customer.password
       return customer
