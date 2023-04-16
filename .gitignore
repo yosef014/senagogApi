@@ -1,8 +1,6 @@
-.env
-
 node_modules/
 dist/
-
+.env
 .gitignore
 init.sh
 deploy.sh
@@ -20,7 +18,6 @@ deploy.sh
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 .idea/
