@@ -47,11 +47,13 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
@@ -93,11 +95,13 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
@@ -185,11 +189,13 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
@@ -273,11 +279,13 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              isNullable:true,
               default: "CURRENT_TIMESTAMP"
             },
             {
@@ -363,11 +371,13 @@ export class createInitTables1673772520033 implements MigrationInterface {
               {
                 name: 'created_at',
                 type: 'timestamp',
+                isNullable:true,
                 default: "CURRENT_TIMESTAMP"
               },
               {
                 name: 'updated_at',
                 type: 'timestamp',
+                isNullable:true,
                 default: "CURRENT_TIMESTAMP"
               },
               {
