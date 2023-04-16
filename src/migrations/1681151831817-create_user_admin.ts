@@ -6,10 +6,10 @@ import {Senagog} from "../resources/senagogs/entities/senagog.entity";
 export class createUserAdmin1681151831817 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     console.log('asdasdasdasdasdsdasds')
-    // const senagog = await Senagog.create({
-    //   name: 'חבד גני איילון',
-    //   description: 'בית כנסת חבד בגני איילון'
-    // })?.save()
+    const senagog = await Senagog.create({
+      name: 'חבד גני איילון',
+      description: 'בית כנסת חבד בגני איילון'
+    })?.save()
     // const bcryptPassword = await bcrypt.hash('123456', 10);
     // console.log('bcryptPassword', bcryptPassword);
     // const savedUser = await User.create({
