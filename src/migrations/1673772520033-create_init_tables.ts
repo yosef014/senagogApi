@@ -47,10 +47,12 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'deleted_at',
@@ -91,10 +93,12 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'deleted_at',
@@ -181,10 +185,12 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'deleted_at',
@@ -267,10 +273,12 @@ export class createInitTables1673772520033 implements MigrationInterface {
             {
               name: 'created_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'updated_at',
               type: 'timestamp',
+              default: "CURRENT_TIMESTAMP"
             },
             {
               name: 'deleted_at',
@@ -355,10 +363,12 @@ export class createInitTables1673772520033 implements MigrationInterface {
               {
                 name: 'created_at',
                 type: 'timestamp',
+                default: "CURRENT_TIMESTAMP"
               },
               {
                 name: 'updated_at',
                 type: 'timestamp',
+                default: "CURRENT_TIMESTAMP"
               },
               {
                 name: 'deleted_at',

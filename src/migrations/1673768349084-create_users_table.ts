@@ -29,10 +29,12 @@ export class createUsersTable1673768349084 implements MigrationInterface {
                       {
                           name: 'created_at',
                           type: 'timestamp',
+                          default: "CURRENT_TIMESTAMP"
                       },
                       {
                           name: 'updated_at',
                           type: 'timestamp',
+                          default: "CURRENT_TIMESTAMP"
                       },
                       {
                           name: 'deleted_at',
@@ -109,6 +111,7 @@ export class createUsersTable1673768349084 implements MigrationInterface {
                       {
                           name: 'created_at',
                           type: 'timestamp',
+                          default: "CURRENT_TIMESTAMP"
                       },
                       {
                           name: 'last_logged',
@@ -118,6 +121,7 @@ export class createUsersTable1673768349084 implements MigrationInterface {
                       {
                           name: 'updated_at',
                           type: 'timestamp',
+                          default: "CURRENT_TIMESTAMP"
                       },
                       {
                           name: 'deleted_at',
