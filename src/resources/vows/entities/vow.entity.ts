@@ -15,7 +15,6 @@ export class Vow extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;
 
-
   @Column({ nullable: true, type: 'bigint' })
   customer_id: number;
 
@@ -27,7 +26,6 @@ export class Vow extends BaseEntity {
 
   @Column({ nullable: true, type: 'varchar' })
   name: string;
-
 
   @CreateDateColumn({ type: 'timestamp' })
   created_at: Date;

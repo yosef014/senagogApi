@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, Query} from '@nestjs/common';
 import { VowsService } from './vows.service';
 import { CreateVowDto } from './dto/create-vow.dto';
 import { UpdateVowDto } from './dto/update-vow.dto';
@@ -12,9 +12,9 @@ export class VowsController {
     return this.vowsService.saveVow(body);
   }
 
-  @Get()
-  findAll() {
-    return this.vowsService.findAll();
+  @Get('get-vows')
+  getVows(@Query() data) {
+    return this.vowsService.getVows(data);
   }
 
   @Get(':id')
