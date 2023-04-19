@@ -20,6 +20,9 @@ export class Receipt extends BaseEntity {
   customer_id: number;
 
   @Column({ nullable: true, type: 'bigint' })
+  senagog_id: number;
+
+  @Column({ nullable: true, type: 'bigint' })
   price: number;
 
   @Column({ nullable: true, type: 'varchar' })

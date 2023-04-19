@@ -8,10 +8,11 @@ import {Vow} from "./entities/vow.entity";
 export class VowsService {
     async saveVow(body) {
         try {
-            const {customer_id, price, description, name} = body
+            const {customer_id, price, description, name, senagog_id} = body
             const vow = await Vow.create({
                 customer_id,
                 price,
+                senagog_id,
                 description,
                 name
             })?.save()
@@ -27,27 +28,27 @@ export class VowsService {
                 data.filter = JSON.parse(data?.filter)
             }
             const {filter} = data
-
             const vowsQuery = Vow.createQueryBuilder('v')
-                //todo need to relation vow with some senagog
-            if (filter.customer_id) {
-
+                .where('v.senagog_id = :senagog_id', { senagog_id: filter?.senagog_id})
+            if (filter?.customer_id) {
+                vowsQuery.andWhere('v.customer_id = :customer_id',{ customer_id: filter.customer_id })
             }
             const vows = await vowsQuery.getMany()
 
             return vows
         } catch (e) {
             new ErrorHandler(e, 'get-vows-error')
-
         }
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} vow`;
-    }
-
-    update(id: number, updateVowDto: UpdateVowDto) {
-        return `This action updates a #${id} vow`;
+    async getVow(data) {
+        try {
+            const { vow_id } = data
+            const vow = await Vow.findOne({where: {id: vow_id }})
+            return vow
+        } catch (e) {
+            new ErrorHandler(e, 'get-vow-error')
+        }
     }
 
     remove(id: number) {

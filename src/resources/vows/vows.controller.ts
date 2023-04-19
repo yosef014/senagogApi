@@ -17,14 +17,9 @@ export class VowsController {
     return this.vowsService.getVows(data);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.vowsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVowDto: UpdateVowDto) {
-    return this.vowsService.update(+id, updateVowDto);
+  @Get('get-vow')
+  getVow(@Query() data) {
+    return this.vowsService.getVow(data);
   }
 
   @Delete(':id')
