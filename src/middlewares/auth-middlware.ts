@@ -26,7 +26,7 @@ export class AuthMiddleware implements NestMiddleware {
             const user: any = await User.findOne({where:{id: decodedToken.jti}});
 
             if (user) {
-                req.body.user = user;
+                req.user = user;
                 return next();
             }
         } catch (e) {

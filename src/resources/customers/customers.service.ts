@@ -7,10 +7,10 @@ import { CustomerSenagogPivot } from "./entities/customer-senagog-pivot.entity";
 
 @Injectable()
 export class CustomersService {
-  async saveCustomer(body) {
+  async saveCustomer(body, req) {
     try {
-      const { first_name, last_name, email, mobile, password, senagog_id, id } = body
-
+      const { first_name, last_name, email, mobile, password, id } = body
+      const senagog_id = req.user.senagog_id
       // find senagog
       const senagog = await Senagog.findOne({where: {id: senagog_id}})
       if (!senagog) {
@@ -42,20 +42,23 @@ export class CustomersService {
     return true
   }
 
-  async getCustomers(data) {
+  async getCustomers(data, req) {
    try {
-     const { senagog_id } = data
-
+     const user = req.user
+     // const { senagog_id } = data
+     const senagog_id = user.senagog_id
      // find senagog
      const senagog = await Senagog.findOne({where: {id: senagog_id}})
      if (!senagog) {
        throw new HttpException('senagog-not-found', HttpStatus.NOT_FOUND)
      }
 
-     const customer = await Customer.createQueryBuilder('c')
+     const customers = await Customer.createQueryBuilder('c')
        .leftJoinAndMapMany('c.pivot', CustomerSenagogPivot, 'csp','csp.senagog_id = :senagog_id', {senagog_id })
        .where('c.id = csp.customer_id')
        .getMany()
+
+     return customers
    } catch (e) {
      new ErrorHandler(e, 'get-customers-error')
    }

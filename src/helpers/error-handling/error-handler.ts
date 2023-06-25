@@ -65,6 +65,7 @@ class ErrorHandler {
   }
 
   handleError () {
+    console.log('this.error', this.error)
     throw new HttpException({ message: this.message, error: this.error }, this.errorStatus);
   }
 }

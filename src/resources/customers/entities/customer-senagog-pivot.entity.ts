@@ -10,7 +10,7 @@ import {
   BaseEntity,
 } from 'typeorm';
 
-@Entity({ name: 'customers' })
+@Entity({ name: 'customer_senagog_pivot' })
 export class CustomerSenagogPivot extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;

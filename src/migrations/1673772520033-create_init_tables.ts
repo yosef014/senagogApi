@@ -21,7 +21,7 @@ export class createInitTables1673772520033 implements MigrationInterface {
             },
             {
               name: 'first_name',
-              type: 'bigint',
+              type: 'varchar',
               isNullable: true,
             },
             {

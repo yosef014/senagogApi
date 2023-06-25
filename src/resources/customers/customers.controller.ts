@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, Query, Req} from '@nestjs/common';
 import { CustomersService } from './customers.service';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
 
@@ -7,13 +7,13 @@ export class CustomersController {
   constructor(private readonly customersService: CustomersService) {}
 
   @Post('save-customer')
-  saveCustomer(@Body() body) {
-    return this.customersService.saveCustomer(body);
+  saveCustomer(@Body() body, @Req() req) {
+    return this.customersService.saveCustomer(body, req);
   }
 
-  @Get()
-  getCustomers(@Query() data) {
-    return this.customersService.getCustomers(data);
+  @Get('get-customers')
+  getCustomers(@Query() data, @Req() req) {
+    return this.customersService.getCustomers(data, req);
   }
 
   @Get(':id')

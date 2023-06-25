@@ -28,8 +28,8 @@ export class Customer extends BaseEntity {
   @Column({ nullable: true, type: 'varchar' })
   email: string;
 
-  @Column({ nullable: true, type: 'varchar' })
-  user_name: string;
+  // @Column({ nullable: true, type: 'varchar' })
+  // user_name: string;
 
   @Column({ nullable: true, type: 'varchar' })
   password: string;
