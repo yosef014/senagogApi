@@ -15,6 +15,10 @@ export class CustomersController {
   getCustomers(@Query() data, @Req() req) {
     return this.customersService.getCustomers(data, req);
   }
+  @Get('get-customer')
+  getCustomer(@Query() data, @Req() req) {
+    return this.customersService.getCustomer(data, req);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

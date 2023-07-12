@@ -7,10 +7,12 @@ import {Receipt} from "./entities/receipt.entity";
 
 @Injectable()
 export class ReceiptsService {
-  async saveReceipt(body) {
+  async saveReceipt(body, req) {
     try {
-      const {customer_id, price, description, name, senagog_id} = body
+      const {customer_id, price, description, name, id} = body
+      const senagog_id = req.user.senagog_id
       const receipt = await Receipt.create({
+        id,
         customer_id,
         price,
         description,
@@ -23,14 +25,15 @@ export class ReceiptsService {
     }
   }
 
-  async getReceipts(data) {
+  async getReceipts(data, req) {
     try {
       if (data?.filter) {
         data.filter = JSON.parse(data?.filter)
       }
+      const senagog_id = req.user.senagog_id
       const {filter} = data
       const receiptQuery = Receipt.createQueryBuilder('r')
-          .where('r.senagog_id = :senagog_id', { senagog_id: filter?.senagog_id})
+          .where('r.senagog_id = :senagog_id', { senagog_id: senagog_id})
       if (filter?.customer_id) {
         receiptQuery.andWhere('r.customer_id = :customer_id',{ customer_id: filter.customer_id })
       }
@@ -55,7 +58,13 @@ export class ReceiptsService {
 
 
 
-  remove(id: number) {
-    return `This action removes a #${id} receipt`;
+  async removeReceipt(data) {
+    try {
+      const {receipt_id} = data
+      await Receipt.delete({id: receipt_id})
+    } catch (e) {
+      new ErrorHandler(e, 'removeReceipt-error')
+
+    }
   }
 }

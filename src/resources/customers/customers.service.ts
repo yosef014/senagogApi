@@ -64,6 +64,29 @@ export class CustomersService {
    }
   }
 
+  async getCustomer(data, req) {
+    try {
+      const user = req.user
+      const {customer_id} = data
+      const senagog_id = user.senagog_id
+      // find senagog
+      const senagog = await Senagog.findOne({where: {id: senagog_id}})
+      if (!senagog) {
+        throw new HttpException('senagog-not-found', HttpStatus.NOT_FOUND)
+      }
+
+      const customer = await Customer.createQueryBuilder('c')
+          .leftJoinAndMapMany('c.pivot', CustomerSenagogPivot, 'csp', 'csp.senagog_id = :senagog_id', {senagog_id})
+          .where('c.id = csp.customer_id')
+          .andWhere('c.id = :customer_id', {customer_id})
+          .getOne()
+
+      return customer
+    } catch (e) {
+      new ErrorHandler(e, 'get-customers-error')
+    }
+  }
+
   findOne(id: number) {
     return `This action returns a #${id} customer`;
   }

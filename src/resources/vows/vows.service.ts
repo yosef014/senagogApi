@@ -6,9 +6,10 @@ import {Vow} from "./entities/vow.entity";
 
 @Injectable()
 export class VowsService {
-    async saveVow(body) {
+    async saveVow(body, req) {
         try {
-            const {customer_id, price, description, name, senagog_id} = body
+            const {customer_id, price, description, name} = body
+            const senagog_id = req.user.senagog_id
             const vow = await Vow.create({
                 customer_id,
                 price,
@@ -22,14 +23,15 @@ export class VowsService {
         }
     }
 
-    async getVows(data) {
+    async getVows(data, req) {
         try {
             if (data?.filter) {
                 data.filter = JSON.parse(data?.filter)
             }
+            const senagog_id = req.user.senagog_id
             const {filter} = data
             const vowsQuery = Vow.createQueryBuilder('v')
-                .where('v.senagog_id = :senagog_id', { senagog_id: filter?.senagog_id})
+                .where('v.senagog_id = :senagog_id', { senagog_id: senagog_id})
             if (filter?.customer_id) {
                 vowsQuery.andWhere('v.customer_id = :customer_id',{ customer_id: filter.customer_id })
             }
@@ -51,7 +53,13 @@ export class VowsService {
         }
     }
 
-    remove(id: number) {
-        return `This action removes a #${id} vow`;
+    async removeVow(data) {
+        try {
+            const {vow_id} = data
+            await Vow.delete({id: vow_id})
+        } catch (e) {
+            new ErrorHandler(e, 'removeVow-error')
+
+        }
     }
 }

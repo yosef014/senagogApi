@@ -1,20 +1,19 @@
-import {Controller, Get, Post, Body, Patch, Param, Delete, Query} from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, Query, Req} from '@nestjs/common';
 import { VowsService } from './vows.service';
-import { CreateVowDto } from './dto/create-vow.dto';
-import { UpdateVowDto } from './dto/update-vow.dto';
+
 
 @Controller('vows')
 export class VowsController {
   constructor(private readonly vowsService: VowsService) {}
 
   @Post('save-vow')
-  saveVow(@Body() body) {
-    return this.vowsService.saveVow(body);
+  saveVow(@Body() body, @Req() req) {
+    return this.vowsService.saveVow(body, req);
   }
 
   @Get('get-vows')
-  getVows(@Query() data) {
-    return this.vowsService.getVows(data);
+  getVows(@Query() data, @Req() req) {
+    return this.vowsService.getVows(data, req);
   }
 
   @Get('get-vow')
@@ -22,8 +21,8 @@ export class VowsController {
     return this.vowsService.getVow(data);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.vowsService.remove(+id);
+  @Delete('remove-vow')
+  removeVow(@Query() data) {
+    return this.vowsService.removeVow(data);
   }
 }
